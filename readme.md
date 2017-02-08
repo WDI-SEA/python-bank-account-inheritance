@@ -37,7 +37,7 @@ of Bank accounts.
     withdraw method returns `False` and their balance is deducted only by
     the amount of the `overdraft_penalty`.
   * Overdraft accounts don't accumulate interest if their balance is below zero.
-    
+
 Sample Input:
 ```python
 basic_account = BankAccount()
@@ -85,4 +85,3 @@ Overdraft account has $-28
 ## Licensing
 All content is licensed under a CC­BY­NC­SA 4.0 license.
 All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
-
