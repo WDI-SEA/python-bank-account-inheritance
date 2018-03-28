@@ -30,6 +30,9 @@ class OverdraftAccount(BankAccount):
   def accumulate_interest(self):
     if self.balance <= 0:
       return self.balance
+    else:
+      self.balance = self.balance + self.balance * .02
+      return self.balance
 
 basic_account = BankAccount()
 basic_account.deposit(600)
@@ -49,10 +52,22 @@ childs_account.accumulate_interest()
 print("Child's account has ${}".format(childs_account.balance))
 print()
 
+print("TEST NEGATIVE BALANCE withdrawal $17")
 overdraft_account = OverdraftAccount()
 overdraft_account.deposit(12)
 print("Overdraft account has ${}".format(overdraft_account.balance))
 overdraft_account.withdraw(17)
+print("Overdraft account has ${}".format(overdraft_account.balance))
+overdraft_account.accumulate_interest()
+print("Overdraft account has ${}".format(overdraft_account.balance))
+
+print()
+
+print("TEST POSITIVE BALANCE withdrawal $10")
+overdraft_account = OverdraftAccount()
+overdraft_account.deposit(12)
+print("Overdraft account has ${}".format(overdraft_account.balance))
+overdraft_account.withdraw(10)
 print("Overdraft account has ${}".format(overdraft_account.balance))
 overdraft_account.accumulate_interest()
 print("Overdraft account has ${}".format(overdraft_account.balance))
