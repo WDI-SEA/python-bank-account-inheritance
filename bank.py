@@ -77,7 +77,7 @@ class OverdraftAccount:
     if self.balance<0:
       self.balance=self.balance
     else:
-      self.balance=self.balanc*1.02
+      self.balance=self.balance*1.02
 
 
 overdraft_account = OverdraftAccount()
