@@ -1,38 +1,38 @@
 class BankAccount():
-  def __init__(self, balance=0):
-    self.balance = balance
-  def deposit(self, amount):
-    self.balance = self.balance + amount
-    return self.balance
-  def withdraw(self, amount):
-    self.balance = self.balance - amount
-    return self.balance
-  def accumulate_interest(self):
-    self.balance = self.balance + self.balance * .02
-    return self.balance
+    def __init__(self, balance=0):
+        self.balance = balance
+    def deposit(self, amount):
+        self.balance = self.balance + amount
+        return self.balance
+    def withdraw(self, amount):
+        self.balance = self.balance - amount
+        return self.balance
+    def accumulate_interest(self):
+        self.balance = self.balance + self.balance * .02
+        return self.balance
 
 class ChildrensAccount(BankAccount):
-  def __init__(self, balance=0):
-    BankAccount.__init__(self)
-  def accumulate_interest(self):
-    self.balance += 10
-    return self.balance
+    def __init__(self, balance=0):
+        BankAccount.__init__(self)
+    def accumulate_interest(self):
+        self.balance += 10
+        return self.balance
 
 
 class OverdraftAccount(BankAccount):
-  def __init__(self, overdraft_penalty = 40):
-    self.overdraft_penalty = overdraft_penalty
-    BankAccount.__init__(self)
-  def withdraw(self, amount):
-    if amount > self.balance:
-      self.balance -= (self.overdraft_penalty)
-      return self.balance
-  def accumulate_interest(self):
-    if self.balance <= 0:
-      return self.balance
-    else:
-      self.balance = self.balance + self.balance * .02
-      return self.balance
+    def __init__(self, overdraft_penalty=40):
+        self.overdraft_penalty = overdraft_penalty
+        BankAccount.__init__(self)
+    def withdraw(self, amount):
+        if amount > self.balance:
+            self.balance -= (self.overdraft_penalty)
+            return self.balance
+    def accumulate_interest(self):
+        if self.balance <= 0:
+            return self.balance
+        else:
+            self.balance = self.balance + self.balance * .02
+            return self.balance
 
 basic_account = BankAccount()
 basic_account.deposit(600)
