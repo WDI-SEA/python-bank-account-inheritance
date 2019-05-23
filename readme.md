@@ -14,7 +14,7 @@ of Bank accounts.
   * Bank accounts have a `withdraw` method
   * the `deposit` method returns the balance of the account after adding
     the deposited amount.
-  * the `withdraw` method returns the amount of money that was successfully
+  * the `withdraw` method returns the balance after the money was successfully
     withdrawn.
   * Bank accounts return `False` if someone tries to deposit or withdraw
     a negative amount.
