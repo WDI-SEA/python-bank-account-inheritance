@@ -25,7 +25,7 @@ class BankAccount:
 
 class ChildrensAccount(BankAccount):
   # pass
-  # def __init__(self):
+  def __init__(self):
     super().__init__()
     self.interest_rate = 0
 
