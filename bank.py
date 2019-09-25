@@ -30,7 +30,7 @@ class ChildrensAccount(BankAccount):
     self.interest_rate = 0
 
   def accumulate_interest(self):
-    self.balance += 10
+    self.balance = self.balance + 10
     return self.balance
 
 class OverdraftAccount(BankAccount):
@@ -45,12 +45,12 @@ class OverdraftAccount(BankAccount):
     elif amount > self.balance:
         self.balance -= self.overdraft_penalty
         return False
-    self.balance -= amount
+    self.balance = self.balance - amount
     return amount
 
   def accumulate_interest(self):
     if self.balance >0 :
-        self.balance += self.balance * self.interest_rate
+        self.balance = self.balance * self.interest_rate
     return self.balance
 
 basic_account = BankAccount()
