@@ -1,11 +1,64 @@
 class BankAccount:
-  pass
+  def __init__(self):
+    self.balance = 0
+    self.interest_rate = .02
+  def deposit(self, amt):
+    try:
+      if int(amt) < 0:
+        print("Amount was negative, please fix and retry")
+        return False
+      self.balance += int(amt)
+    except:
+      print("Amount was not a number, please fix and retry")
+    return self.balance
+  def withdraw(self, amt):
+    try:
+      if int(amt) < 0:
+        print("Amount was negative, please fix and retry")
+        return False
+      if self.balance > int(amt):
+        self.balance -= int(amt)
+      else:
+        print("Insufficient balance, cancelling")
+    except:
+      print("Amount was not a number, please fix and retry")
+    return self.balance
+  def accumulate_interest(self):
+    self.balance = self.balance * (1 + self.interest_rate)
+    return self.balance
 
-class ChildrensAccount:
-  pass
 
-class OverdraftAccount:
-  pass
+class ChildrensAccount(BankAccount):
+  def __init__(self):
+    super().__init__()
+    self.interest_rate = 0.0
+  def accumulate_interest(self):
+    self.balance += 10
+    return self.balance
+
+
+class OverdraftAccount(BankAccount):
+  def __init__(self):
+    super().__init__()
+    self.overdraft_penalty = 40
+  def withdraw(self, amt):
+    try:
+      if int(amt) < 0:
+        print("Amount was negative, please fix and retry")
+        return False
+      if self.balance < int(amt):
+        print("Overdraft!")
+        self.balance -= self.overdraft_penalty
+        return False
+    except:
+      print("Amount was not a number, please fix and retry")
+  def accumulate_interest(self):
+    if self.balance >= 0:
+      self.balance = self.balance * (1 + self.interest_rate)
+    return self.balance
+
+
+
 
 basic_account = BankAccount()
 basic_account.deposit(600)
