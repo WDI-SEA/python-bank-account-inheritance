@@ -1,11 +1,46 @@
 class BankAccount:
-  pass
+    def __init__(self, balance=0):
+        self.balance = balance
+        self.apy = 0.2
 
-class ChildrensAccount:
-  pass
+    def deposit(self, amount):
+        if amount <= 0:
+            print("False")
+            return False
+        print("${} deposited".format(amount))
+        self.balance += amount
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("False")
+            return False
+        print("${} withdrawn".format(amount))
+        self.balance -= amount
+    def accumulate_interest(self):
+        yields = self.balance * self.apy
+        self.balance *= 1 + self.apy
+        print("Your dividends made your account rise by ${0} for an end balance of ${1}".format(yields, self.balance))
 
-class OverdraftAccount:
-  pass
+class ChildrensAccount(BankAccount):
+    def __init__ (self, balance=0):
+        super().__init__(balance)
+
+    def deposit(self, amount):
+        super().deposit(amount)
+
+    def withdraw(self, amount):
+        super().withdraw(amount)
+
+class OverdraftAccount(BankAccount):
+    def __init__ (self, balance=0):
+        super().__init__(balance)
+
+    def deposit(self, amount):
+        super().deposit(amount)
+        
+    def withdraw(self, amount):
+        super().withdraw(amount)
+        if amount < 0:
+          return False
 
 basic_account = BankAccount()
 basic_account.deposit(600)
