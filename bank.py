@@ -50,6 +50,9 @@ class OverdraftAccount(BankAccount):
         print("Overdraft!")
         self.balance -= self.overdraft_penalty
         return False
+      else:
+        self.balance -= amt
+        return self.balance
     except:
       print("Amount was not a number, please fix and retry")
   def accumulate_interest(self):
