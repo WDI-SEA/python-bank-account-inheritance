@@ -34,14 +34,11 @@ class OverdraftAccount(BankAccount):
     if amount > self.balance: 
       self.balance -= self.overdraft_penalty
       return False
-    elif amount < 0: return False
-    self.balance -= amount
-    return self.balance
+    return super().withdraw(amount)
 
   def accumulate_interest(self):
     if self.balance < 0: return self.balance
-    self.balance = self.balance + (self.balance * self.interest)
-    return self.balance
+    return super().accumulate_interest()
 
 
 basic_account = BankAccount()
