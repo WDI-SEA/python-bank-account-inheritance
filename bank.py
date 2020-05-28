@@ -18,8 +18,8 @@ class BankAccount:
     return self.balance
 
 class ChildrensAccount(BankAccount):
-  def __init__(self, balance = 0, interest = 0):
-    super().__init__(balance, interest)
+  def __init__(self, balance = 0):
+    super().__init__(balance, 0)
 
   def accumulate_interest(self):
     self.balance += 10
