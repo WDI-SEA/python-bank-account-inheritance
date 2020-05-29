@@ -1,11 +1,66 @@
 class BankAccount:
-  pass
+  def __init__(self, balance=0, interest=0.02):
+    self.balance = balance
+    self.interest = interest
 
-class ChildrensAccount:
-  pass
+  def deposit(self, amount):
+    if amount < 0:
+      return False
+    else:
+      self.balance = self.balance + amount
+      print(f'Deposited ${amount} into account')
+      return self.balance
 
-class OverdraftAccount:
-  pass
+  def withdraw(self, amount):
+    if amount < 0:
+      print('Can\'t withdraw a negative amount, our bank doesn\'t pay you!')
+      return False
+    else:
+      self.balance = self.balance - amount
+      print(f'Withdrew ${amount} from account')
+      return self.balance
+
+  def accumulate_interest(self):
+    if self.balance > 0:
+      self.balance += (self.balance*self.interest)
+      print(f'Your account accrued ${self.balance*self.interest} in interest')
+      return self.balance
+  
+
+class ChildrensAccount(BankAccount):
+  def __init__(self, balance=0):
+    super().__init__(balance)
+
+  def accumulate_interest(self):
+    self.balance += 10
+    print(f'Allowance is $10')
+    return self.balance
+
+
+class OverdraftAccount(BankAccount):
+  def __init__(self, balance=0, interest=0.02, overdraft_penalty=40):
+    super().__init__(balance, interest)
+    self.overdraft_penalty = overdraft_penalty
+    
+  def withdraw(self, amount):
+    if amount > self.balance:
+      print('Can\'t withdraw more than your balance, now give us $40 for the hassle!')
+      self.balance -= self.overdraft_penalty
+      print(f'You just lost ${40}!')
+      return False
+    else:
+      self.balance = self.balance - amount
+      print(f'Withdrew ${amount} from your account')
+      return self.balance
+
+  def accumulate_interest(self): 
+    if self.balance < 0:
+      print('You don\'t want to accrue negative interest, that would be bad.')
+      return self.balance
+    else: 
+      self.balance += (self.balance*self.interest)
+      print(f'Your account accrued ${self.balance*self.interest} in interest')
+      return self.balance
 
 basic_account = BankAccount()
 basic_account.deposit(600)
