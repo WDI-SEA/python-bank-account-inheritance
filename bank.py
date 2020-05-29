@@ -1,5 +1,5 @@
 class BankAccount:
-  def __init__(self, balance):
+  def __init__(self, balance = 0):
     self.balance = balance
     self.interest_rate = 1.02
 
@@ -9,35 +9,42 @@ class BankAccount:
       print('Cannot deposit a negative value')
     else:
       self.balance = self.balance + deposit_amount
-      return balance
+      return self.balance
   
   def withdraw(self, withdraw_amount):
     if withdraw_amount < 0:
       return False
       print('Cannot withdraw a negative amount')
-    elif withdraw_amount - self.balance < 0:
-      return False
-      print('Insufficient funds')
+    # elif 0 > (withdraw_amount - self.balance):
+    #   return False
+    #   print('Insufficient funds')
     else:
       self.balance = self.balance - withdraw_amount
-      return balance
+      return self.balance
 
   def accumulate_interest(self):
     self.balance = self.balance * self.interest_rate
-    return balance
+    return self.balance
 
 class ChildrensAccount(BankAccount):
-  def __init__(self, balance):
-    super().balance = balance
+  def __init__(self, balance = 0):
+    # super().__init__(self.balance)
+    self.balance = balance
     self.interest_rate = 0
 
   def accumulate_interest(self):
     self.balance = self.balance + 10
   
 class OverdraftAccount(BankAccount):
-  def __init__(self, balance):
+  def __init__(self, balance = 0):
     self.balance = balance
-    self.overdraft_policy = overdraft_policy
+    self.overdraft_policy = 40
+    self.interest_rate = 0
+  
+  def withdraw(self, withdraw_amount):
+    if (self.balance - withdraw_amount) < 0:
+      self.balance = self.balance - self.overdraft_policy
+      return self.balance
 
 
 basic_account = BankAccount()
