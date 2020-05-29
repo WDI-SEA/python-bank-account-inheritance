@@ -45,6 +45,9 @@ class OverdraftAccount(BankAccount):
     if (self.balance - withdraw_amount) < 0:
       self.balance = self.balance - self.overdraft_policy
       return self.balance
+    
+  def accumulate_interest(self):
+    return self.balance
 
 
 basic_account = BankAccount()
