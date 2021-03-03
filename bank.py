@@ -1,11 +1,56 @@
 class BankAccount:
-  pass
+  def __init__(self):
+    self.balance = 0
+  def deposit(self,amount):
+    if amount > 0:
+      self.balance += amount
+      # self.accumulate_interest()
+      return self.balance
+    else: 
+      return "You can\'t add negative number"
+  def withdraw(self,amount):
+    if amount > 0 :
+      self.balance -= amount
+      # accumulate_interest()
+      return self.balance
+    else:
+      return "You can\'t use negative amount"
+  def accumulate_interest(self):
+    self.balance += (2 * self.balance) / 100
+  
 
-class ChildrensAccount:
-  pass
+class ChildrensAccount(BankAccount):
+  def __init__(self):
+    super().__init__()
+    self.intrast = 0
+  def accumulate_interest(self):
+    self.balance += 10
 
-class OverdraftAccount:
-  pass
+
+class OverdraftAccount(BankAccount):
+    def __init__(self):
+      super().__init__()
+      self.overdraft_penalty = 40
+    def deposit(self,amount):
+      if amount > 0:
+        self.balance += amount
+        return self.balance
+      else:
+        return "You can\'t use negative amount"
+    def withdraw(self,amount):
+      if amount > 0 :
+        if self.balance > amount :
+          self.balance -= amount
+        else:
+          self.balance -= self.overdraft_penalty
+        return self.balance
+      else:
+        return "You can\'t use negative amount"
+    def accumulate_interest(self):
+      if self.balance > 0 :
+        super().accumulate_interest()
+
+
 
 basic_account = BankAccount()
 basic_account.deposit(600)
