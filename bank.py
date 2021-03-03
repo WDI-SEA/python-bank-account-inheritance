@@ -4,11 +4,17 @@ class BankAccount:
   def __str__(self):
     return 'This account has a balance of ${}'.format(self.balance)
   def deposit(self, amount):
-    self.balance += amount
-    print(f'${amount} has been deposited into this account')
+    if amount < 0:
+      return False
+    else:
+      self.balance += amount
+      print(f'${amount} has been deposited into this account. The current balance is ${self.balance}.')
   def withdraw(self, amount):
-    self.balance -= amount
-    print(f'${amount} was withdrawn from the account. The remaining balance is ${self.balance}.')
+    if amount < 0:
+      return False
+    else:
+      self.balance -= amount
+      print(f'${amount} was withdrawn from the account. The remaining balance is ${self.balance}.')
 # class ChildrensAccount:
 #   pass
 
