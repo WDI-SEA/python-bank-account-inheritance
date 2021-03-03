@@ -1,6 +1,7 @@
 class BankAccount:
   def __init__(self):
     self.balance = 0
+    self.interest_rate = 0.02
   def __str__(self):
     return 'This account has a balance of ${}'.format(self.balance)
   def deposit(self, amount):
@@ -15,6 +16,9 @@ class BankAccount:
     else:
       self.balance -= amount
       print(f'${amount} was withdrawn from the account. The remaining balance is ${self.balance}.')
+  def accumulate_interest(self):
+    self.balance = self.balance + (self.balance * self.interest_rate)
+    print(f'Interest accumulated. The new balance is ${self.balance}')
 # class ChildrensAccount:
 #   pass
 
@@ -24,7 +28,8 @@ class BankAccount:
 blakes_account = BankAccount()
 blakes_account.deposit(100)
 blakes_account.withdraw(25)
-print(blakes_account)
+blakes_account.accumulate_interest()
+
 
 
 
