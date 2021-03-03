@@ -1,11 +1,30 @@
-class BankAccount:
-  pass
+class BankAccount():
+  def __init__(self, balance=0):
+    self.balance = balance
 
-class ChildrensAccount:
-  pass
 
-class OverdraftAccount:
-  pass
+  def __str__(self):
+    return 'Your checking is ${}'.format(self.checking)
+  
+  def __str__(self):
+    return 'Your savings is ${}'.format(self.checking)
+
+  def deposit(self, amount):
+    self.balance += amount
+
+  def withdraw(self, amount):
+    self.balance -= amount
+
+
+class ChildrensAccount():
+  super().__init__(savings, checking, amount)
+ 
+
+class OverdraftAccount():
+  def withdraw(self, amount):
+
+  
+
 
 basic_account = BankAccount()
 basic_account.deposit(600)
