@@ -6,6 +6,9 @@ class BankAccount:
   def deposit(self, amount):
     self.balance += amount
     print(f'${amount} has been deposited into this account')
+  def withdraw(self, amount):
+    self.balance -= amount
+    print(f'${amount} was withdrawn from the account. The remaining balance is ${self.balance}.')
 # class ChildrensAccount:
 #   pass
 
@@ -13,7 +16,8 @@ class BankAccount:
 #   pass
 
 blakes_account = BankAccount()
-blakes_account.deposit(30)
+blakes_account.deposit(100)
+blakes_account.withdraw(25)
 print(blakes_account)
 
 
