@@ -16,16 +16,13 @@ class BankAccount():
       print(f'${amount} successfully deposited into account. Your new balance is ${self.balance}.')
 
   def withdraw(self, amount):
-    if self.overdraft_penalty == 0:
-      if amount < 0:
+    if amount < 0:
         print('Error. Cannot withdraw negative amount. Perhaps you wish to make a deposit?')
-      else:
-        self.balance = self.balance - amount
-        print(f'${amount} successfully withdrawn from account. Your new balance is ${self.balance}')
+    elif self.overdraft_penalty == 0:
+      self.balance = self.balance - amount
+      print(f'${amount} successfully withdrawn from account. Your new balance is ${self.balance}')
     else: 
-      if amount < 0:
-        print('Error. Cannot withdraw negative amount. Perhaps you wish to make a deposit?')
-      elif amount > self.balance:
+      if amount > self.balance:
         self.balance = self.balance - self.overdraft_penalty
         print(f'Unable to process. Requested amount exceeds account balance. A penalty of ${self.overdraft_penalty} has been applied to your account. Your new balance is ${self.balance}.')
       else:
