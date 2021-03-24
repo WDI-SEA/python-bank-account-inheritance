@@ -74,11 +74,8 @@ Child's account has $27
     money out of their account.
   * Overdraft accounts are created with an `overdraft_penalty` property
     that defaults to $40.
-  * Customer's aren't allowed to withdraw more money than they have in their
-    account. If a customer tries to withdraw more than they have then the
-    withdraw method returns `False` and their balance is deducted only by
-    the amount of the `overdraft_penalty`.
-  * Overdraft accounts don't accumulate interest if their balance is below zero.
+  * Customer's aren't allowed to withdraw more money than they have in their account. If a customer tries to withdraw more than they have then the withdraw method returns `False` and their balance is deducted only by the amount of the `overdraft_penalty`.
+  * Overdraft accounts don't accumulate interest if their balance is below zero, but return `False` instead.
     
 Sample Output:
 ```
