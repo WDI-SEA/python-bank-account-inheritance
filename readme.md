@@ -12,19 +12,15 @@ of Bank accounts.
 
 * Create a base **BankAccount** class
   * Bank accounts keep track of their current `balance`
-  * Bank accounts have a `deposit` method
-  * Bank accounts have a `withdraw` method
-  * the `deposit` method returns the balance of the account after adding
-    the deposited amount.
-  * the `withdraw` method returns the balance after the money was successfully
-    withdrawn.
-  * Bank accounts return `False` if someone tries to deposit or withdraw
-    a negative amount.
+    * the `balance` starts at 0 until a deposit is made
   * Bank accounts are created with a default interest rate of 2%
-  * Bank accounts have a `accumulate_interest` method that sets the balance
-    equal to the balance plus the balance times the interest rate
-  * `accumulate_interest` returns the balance of the account after calculating
-    the accumulated interest
+  * Bank accounts have a `deposit` method
+    * the `deposit` method returns the balance of the account after adding the deposited amount.
+  * Bank accounts have a `withdraw` method
+    * the `withdraw` method returns the balance after the money was successfully withdrawn.
+  * Bank accounts return `False` if someone tries to deposit or withdraw a negative amount.
+  * Bank accounts have a `accumulate_interest` method that sets the balance equal to the balance plus the balance times the interest rate
+    * `accumulate_interest` returns the balance of the account after calculating the accumulated interest
 
 Sample Input:
 ```python
