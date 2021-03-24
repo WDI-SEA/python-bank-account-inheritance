@@ -12,19 +12,15 @@ of Bank accounts.
 
 * Create a base **BankAccount** class
   * Bank accounts keep track of their current `balance`
-  * Bank accounts have a `deposit` method
-  * Bank accounts have a `withdraw` method
-  * the `deposit` method returns the balance of the account after adding
-    the deposited amount.
-  * the `withdraw` method returns the balance after the money was successfully
-    withdrawn.
-  * Bank accounts return `False` if someone tries to deposit or withdraw
-    a negative amount.
+    * the `balance` starts at 0 until a deposit is made
   * Bank accounts are created with a default interest rate of 2%
-  * Bank accounts have a `accumulate_interest` method that sets the balance
-    equal to the balance plus the balance times the interest rate
-  * `accumulate_interest` returns the balance of the account after calculating
-    the accumulated interest
+  * Bank accounts have a `deposit` method
+    * the `deposit` method returns the balance of the account after adding the deposited amount.
+  * Bank accounts have a `withdraw` method
+    * the `withdraw` method returns the balance after the money was successfully withdrawn.
+  * Bank accounts return `False` if someone tries to deposit or withdraw a negative amount.
+  * Bank accounts have a `accumulate_interest` method that sets the balance equal to the balance plus the balance times the interest rate
+    * `accumulate_interest` returns the balance of the account after calculating the accumulated interest
 
 Sample Input:
 ```python
@@ -45,7 +41,7 @@ Basic account has $583
 Basic account has $594.66
 ```
 
-## Part 2: Making a Child Class
+## Part 2: Making a Child Class Override Parent Class Methods
 
 * Create a **ChildrensAccount** class
   * Children's bank accounts have an interest rate of Zero.
@@ -71,30 +67,16 @@ Child's account has $17
 Child's account has $27
 ```
 
-## Part 3: Making Another Child Class
+## Part 3: Making Child Class Methods With New Properties
 
 * Create an **OverdraftAccount** class
   * An overdraft account penalizes customers for trying to draw too much
     money out of their account.
   * Overdraft accounts are created with an `overdraft_penalty` property
     that defaults to $40.
-  * Customer's aren't allowed to withdraw more money than they have in their
-    account. If a customer tries to withdraw more than they have then the
-    withdraw method returns `False` and their balance is deducted only by
-    the amount of the `overdraft_penalty`.
-  * Overdraft accounts don't accumulate interest if their balance is below zero.
-
-Sample Input:
-```python
-overdraft_account = OverdraftAccount()
-overdraft_account.deposit(12)
-print("Overdraft account has ${}".format(overdraft_account.balance))
-overdraft_account.withdraw(17)
-print("Overdraft account has ${}".format(overdraft_account.balance))
-overdraft_account.accumulate_interest()
-print("Overdraft account has ${}".format(overdraft_account.balance))
-```
-
+  * Customer's aren't allowed to withdraw more money than they have in their account. If a customer tries to withdraw more than they have then the withdraw method returns `False` and their balance is deducted only by the amount of the `overdraft_penalty`.
+  * Overdraft accounts don't accumulate interest if their balance is below zero, but return `False` instead.
+    
 Sample Output:
 ```
 Overdraft account has $12
