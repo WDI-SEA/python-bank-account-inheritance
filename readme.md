@@ -76,7 +76,18 @@ Child's account has $27
     that defaults to $40.
   * Customer's aren't allowed to withdraw more money than they have in their account. If a customer tries to withdraw more than they have then the withdraw method returns `False` and their balance is deducted only by the amount of the `overdraft_penalty`.
   * Overdraft accounts don't accumulate interest if their balance is below zero, but return `False` instead.
-    
+
+Sample Input:
+```python
+  overdraft_account = OverdraftAccount()
+  overdraft_account.deposit(12)
+  print("Overdraft account has ${}".format(overdraft_account.balance))
+  overdraft_account.withdraw(17)
+  print("Overdraft account has ${}".format(overdraft_account.balance))
+  overdraft_account.accumulate_interest()
+  print("Overdraft account has ${}".format(overdraft_account.balance))
+```
+
 Sample Output:
 ```
 Overdraft account has $12
