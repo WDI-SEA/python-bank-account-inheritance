@@ -29,6 +29,9 @@ class BankAccount:
 
 
 class ChildrensAccount(BankAccount):
+  def __init__(self):
+    super().__init__()
+    self.interest_rate = 0
   # override parent class methods
   def accumulate_interest(self):
     # add ten dollars to balance
@@ -41,7 +44,7 @@ class OverdraftAccount(BankAccount):
   def __init__(self):
     self.overdraft_penalty = 40
     # invoke super to get the parent class's properties
-    super().__init__()
+    return super().__init__()
 
   # override parent class methods
   def withdraw(self, amount):
@@ -60,7 +63,7 @@ class OverdraftAccount(BankAccount):
     # return if balance is below 0
     if self.balance < 0: return False
     # otherwise acculate interest like normal
-    super().accumulate_interest()
+    return super().accumulate_interest()
   
 try:
   basic_account = BankAccount()
