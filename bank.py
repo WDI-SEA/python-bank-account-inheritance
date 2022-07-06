@@ -62,7 +62,6 @@ class OverdraftAccount(BankAccount):
     # otherwise acculate interest like normal
     super().accumulate_interest()
   
-
 try:
   basic_account = BankAccount()
   basic_account.deposit(600)
