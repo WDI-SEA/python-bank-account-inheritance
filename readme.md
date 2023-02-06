@@ -67,7 +67,7 @@ Child's account has $17
 Child's account has $27
 ```
 
-## Part 3: Making Child Class Methods With New Properties
+## Part 3: Making Overdraft Account With New Properties
 
 * Create an **OverdraftAccount** class
   * An overdraft account penalizes customers for trying to draw too much
